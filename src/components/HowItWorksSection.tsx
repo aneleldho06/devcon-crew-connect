@@ -1,4 +1,4 @@
-import { UserPlus, Search, CheckSquare, Settings } from "lucide-react";
+import { UserPlus, Search, CheckSquare, Settings, Sparkles } from "lucide-react";
 
 const steps = [
   { icon: UserPlus, title: "Sign Up", desc: "Create your volunteer account in seconds.", num: "01" },
@@ -9,28 +9,44 @@ const steps = [
 
 export function HowItWorksSection() {
   return (
-    <section id="how-it-works" className="relative px-4 py-28">
-      <div className="pointer-events-none absolute right-[10%] bottom-0 h-[300px] w-[300px] rounded-full bg-glow-pink/10 blur-[100px]" />
-      <div className="relative mx-auto max-w-5xl">
-        <p className="text-center text-sm font-semibold uppercase tracking-widest text-accent">Process</p>
-        <h2 className="mt-3 text-center text-3xl font-bold text-foreground md:text-4xl">
-          How it works
-        </h2>
-        <div className="mt-14 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-          {steps.map((s, i) => (
-            <div key={s.title} className="group text-center">
-              <div className="relative mx-auto h-20 w-20">
-                <div className="absolute inset-0 rounded-2xl bg-secondary transition-colors group-hover:bg-primary/10" />
-                <div className="relative flex h-full w-full flex-col items-center justify-center">
-                  <span className="text-xs font-bold tracking-widest text-primary">{s.num}</span>
-                  <s.icon size={20} className="mt-1 text-muted-foreground transition-colors group-hover:text-primary" />
+    <section id="how-it-works" className="relative bg-muted px-6 py-24">
+      <div className="mx-auto max-w-7xl">
+        <div className="flex items-center gap-3">
+          <Sparkles size={20} className="text-primary" strokeWidth={2.5} />
+          <p className="text-xs font-bold uppercase tracking-[0.2em] text-primary">How It Works</p>
+        </div>
+
+        <div className="mt-6 grid gap-10 lg:grid-cols-[1fr_auto] lg:items-end">
+          <h2 className="text-display text-4xl text-foreground md:text-5xl lg:text-6xl">
+            Creativity meets <br />
+            <span className="relative inline-block">
+              strategy.
+              <span className="absolute -bottom-1 left-0 h-2 w-full bg-primary -z-0" />
+            </span>
+          </h2>
+          <p className="max-w-sm text-base leading-relaxed text-muted-foreground">
+            From the moment volunteers sign up to the final shift wrap-up, every step is designed to feel effortless for the team and the organizers.
+          </p>
+        </div>
+
+        <div className="mt-14 grid gap-4 md:grid-cols-2 lg:grid-cols-4">
+          {steps.map((s) => (
+            <div
+              key={s.title}
+              className="group relative overflow-hidden rounded-2xl border border-border bg-card p-6 transition-all hover:bg-accent hover:border-accent"
+            >
+              <div className="flex items-start justify-between">
+                <span className="text-5xl font-black tracking-tight text-primary">{s.num}</span>
+                <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-secondary group-hover:bg-primary/20">
+                  <s.icon size={20} className="text-foreground group-hover:text-primary" strokeWidth={2.2} />
                 </div>
               </div>
-              {i < steps.length - 1 && (
-                <div className="mx-auto mt-2 hidden h-0.5 w-12 bg-border/50 lg:block" style={{ position: "relative", left: "50%" }} />
-              )}
-              <h3 className="mt-4 font-semibold text-foreground">{s.title}</h3>
-              <p className="mt-1 text-sm text-muted-foreground">{s.desc}</p>
+              <h3 className="mt-6 text-lg font-black uppercase tracking-tight text-foreground group-hover:text-primary">
+                {s.title}
+              </h3>
+              <p className="mt-2 text-sm leading-relaxed text-muted-foreground group-hover:text-accent-foreground/85">
+                {s.desc}
+              </p>
             </div>
           ))}
         </div>

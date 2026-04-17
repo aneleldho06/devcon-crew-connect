@@ -1,66 +1,64 @@
 import { useState } from "react";
-import { Menu, X, Zap } from "lucide-react";
-import { Button } from "@/components/ui/button";
+import { Menu, X, Sparkles, Phone } from "lucide-react";
 
 const navLinks = [
-  { label: "About", href: "#about" },
+  { label: "About Us", href: "#about" },
   { label: "Features", href: "#features" },
-  { label: "How It Works", href: "#how-it-works" },
+  { label: "Process", href: "#how-it-works" },
   { label: "Demo", href: "#demo" },
-  { label: "Technical", href: "#technical" },
+  { label: "Stack", href: "#technical" },
 ];
 
 export function Navbar() {
   const [open, setOpen] = useState(false);
 
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50 border-b border-border/30 bg-background/60 backdrop-blur-xl">
-      <div className="mx-auto flex h-16 max-w-6xl items-center justify-between px-4">
-        <a href="#" className="flex items-center gap-2 text-lg font-bold tracking-tight">
-          <Zap size={20} className="text-primary" />
-          <span className="text-foreground">TECHFEST</span>
-          <span className="text-primary">2026</span>
+    <nav className="absolute top-0 left-0 right-0 z-50">
+      <div className="mx-auto flex h-20 max-w-7xl items-center justify-between px-6">
+        <a href="#" className="flex items-center gap-2 text-xl font-black tracking-tight text-accent-foreground">
+          <Sparkles size={22} className="text-primary" strokeWidth={2.5} />
+          <span>TECHFEST</span>
         </a>
 
-        <div className="hidden items-center gap-8 md:flex">
+        <div className="hidden items-center gap-7 md:flex">
           {navLinks.map((l) => (
             <a
               key={l.href}
               href={l.href}
-              className="text-sm text-muted-foreground transition-colors hover:text-foreground"
+              className="text-sm font-semibold uppercase tracking-wide text-accent-foreground/90 transition-colors hover:text-primary"
             >
               {l.label}
             </a>
           ))}
-          <Button asChild size="sm" className="rounded-full bg-accent px-5 text-accent-foreground hover:bg-accent/80">
-            <a href="http://localhost:5080" target="_blank" rel="noopener noreferrer">
-              Open System
-            </a>
-          </Button>
         </div>
 
-        <button className="text-foreground md:hidden" onClick={() => setOpen(!open)} aria-label="Toggle menu">
-          {open ? <X size={24} /> : <Menu size={24} />}
+        <div className="hidden items-center gap-3 md:flex">
+          <div className="flex h-10 w-10 items-center justify-center rounded-full bg-primary">
+            <Phone size={16} className="text-primary-foreground" strokeWidth={2.5} />
+          </div>
+          <div className="text-xs font-semibold uppercase text-accent-foreground/70">
+            <div>Event Line</div>
+            <div className="text-sm font-bold text-accent-foreground">+43 879 5673 9876</div>
+          </div>
+        </div>
+
+        <button className="text-accent-foreground md:hidden" onClick={() => setOpen(!open)} aria-label="Toggle menu">
+          {open ? <X size={26} /> : <Menu size={26} />}
         </button>
       </div>
 
       {open && (
-        <div className="border-t border-border/30 bg-background/95 backdrop-blur-xl px-4 pb-4 md:hidden">
+        <div className="bg-accent/95 backdrop-blur-xl px-6 pb-6 md:hidden">
           {navLinks.map((l) => (
             <a
               key={l.href}
               href={l.href}
               onClick={() => setOpen(false)}
-              className="block py-3 text-sm text-muted-foreground hover:text-foreground"
+              className="block py-3 text-sm font-semibold uppercase text-accent-foreground hover:text-primary"
             >
               {l.label}
             </a>
           ))}
-          <Button asChild size="sm" className="mt-2 w-full rounded-full bg-accent text-accent-foreground">
-            <a href="http://localhost:5080" target="_blank" rel="noopener noreferrer">
-              Open System
-            </a>
-          </Button>
         </div>
       )}
     </nav>
