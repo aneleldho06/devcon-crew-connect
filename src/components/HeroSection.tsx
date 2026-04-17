@@ -1,5 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { ExternalLink, Play, Sparkles, Star } from "lucide-react";
+import heroVolunteer from "@/assets/hero-volunteer.png";
 
 const stats = [
   { value: "500+", label: "Active Volunteers" },
@@ -65,16 +66,27 @@ export function HeroSection() {
           </div>
         </div>
 
-        {/* Massive title */}
-        <h1 className="mt-12 text-display text-[20vw] text-primary leading-[0.85] md:text-[16vw] lg:text-[14rem] xl:text-[16rem]">
-          TechFest
-          <br />
-          <span className="text-accent-foreground">2026</span>
-        </h1>
+        {/* Massive title with overlapping volunteer */}
+        <div className="relative mt-12">
+          <h1 className="text-display relative z-0 text-[20vw] leading-[0.85] text-primary md:text-[16vw] lg:text-[14rem] xl:text-[16rem]">
+            TechFest
+            <br />
+            <span className="text-accent-foreground">2026</span>
+          </h1>
 
-        {/* Decorative star */}
-        <div className="pointer-events-none absolute right-[5%] top-[35%] hidden lg:block">
-          <Sparkles size={56} className="text-primary animate-float" strokeWidth={2} />
+          {/* Volunteer photo overlapping title */}
+          <img
+            src={heroVolunteer}
+            alt="TechFest 2026 volunteer wearing headphones"
+            width={896}
+            height={1152}
+            className="pointer-events-none absolute left-1/2 top-1/2 z-10 w-[55%] max-w-[520px] -translate-x-1/2 -translate-y-[55%] object-contain drop-shadow-2xl md:w-[45%]"
+          />
+
+          {/* Decorative star */}
+          <div className="pointer-events-none absolute right-[2%] top-[10%] z-20 hidden lg:block">
+            <Sparkles size={56} className="animate-float text-primary" strokeWidth={2} />
+          </div>
         </div>
       </div>
 
